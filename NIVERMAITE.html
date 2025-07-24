@@ -273,9 +273,6 @@
 
     <div id="homeView" class="center-wrap">
         <div class="card text-center">
-            <div class="banner">
-                <img src="https://i.ibb.co/qMcR7MK/Banner-Festa-Maite.jpg" alt="Banner da Festa da Maitê">
-            </div>
             <h1>Festa da Maitê 🎉</h1>
             <p>Estamos muito felizes em celebrar o 1º aninho da nossa princesa Maitê! 💜</p>
             <p>
@@ -287,6 +284,9 @@
 
     <div id="confirmView" class="center-wrap" hidden>
         <div class="card" id="confirmCard">
+            <div class="banner">
+                <img src="https://i.ibb.co/6RT4rRzB/Imagem-do-Whats-App-de-2025-07-15-s-17-47-35-48b39f9c.jpg" alt="Banner da Festa da Maitê">
+            </div>
             <h1>Maitê faz 1 aninho! 👧🎉</h1>
             <p id="familiaSaudacao"></p>
             <p>
@@ -367,7 +367,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // #region UTILITIES & STATE
             const $ = (id) => document.getElementById(id);
             const STORAGE_KEY = 'conviteMaite_familias_v1';
             const SUGESTAO_KEY = 'conviteMaite_sugestao_v1';
@@ -424,9 +423,6 @@
                 });
             }
 
-            // #endregion
-
-            // #region STORAGE MANAGEMENT
             function loadFromStorage() {
                 try {
                     const raw = localStorage.getItem(STORAGE_KEY);
@@ -446,6 +442,7 @@
                     console.error('Erro ao salvar storage', e);
                 }
             }
+
             function saveSugestaoPresente() {
                 try {
                     sugestaoPresente = $('sugestaoPresente').innerHTML;
@@ -454,9 +451,7 @@
                     console.error('Erro ao salvar sugestão', e);
                 }
             }
-            // #endregion
 
-            // #region UI RENDERING
             function renderFamilias() {
                 const container = $('familiasContainer');
                 container.innerHTML = '';
@@ -497,9 +492,6 @@
                 });
             }
 
-            // #endregion
-
-            // #region PAGE & MODAL MANAGEMENT
             function showView(viewName) {
                 const views = {
                     home: $('homeView'),
@@ -535,9 +527,7 @@
                 editId = null;
                 $('editModal').style.display = 'none';
             }
-            // #endregion
 
-            // #region EVENT HANDLERS
             function handleLogin() {
                 const password = $('adminPassword').value;
                 if (password === ADMIN_PASSWORD) {
@@ -604,31 +594,30 @@
             function enviarLinkWhatsApp(fam) {
                 const link = buildInviteLink(fam.responsavel, fam.membros);
                 
-                // Mensagem com markdown para WhatsApp
-                const msg = `🌟✨ *Olá, meus amiguinhos e familiares encantados!* ✨🌟
-
+                const msg = `🌟✨ Olá, meus amiguinhos e familiares encantados! ✨🌟
+                
 O meu aniversário está se aproximando, e eu estou radiante de alegria! 🥳🎂
-
+                
 Quero muito que você faça parte dessa festinha dos sonhos, cheia de amor, magia e sorrisos! 🌈🧚‍♀️
 A sua presença é um presentão para mim! Mas, se não puder vir, não tem problema… vamos entender com muito carinho. 💌
-
+                
 Como nossa lista de convidados é bem especial e limitada, é muito importante que cada pessoa confirme a presença individualmente.
-
+                
 Assim conseguimos organizar tudo com muito amor e preparar um dia inesquecível! 🎉
-🔔 *Importante:*
-
+🔔 Importante:
+                
 A confirmação deve ser feita em até 5 dias úteis após o envio deste convite mágico.
-
+                
 Se não recebermos sua resposta dentro do prazo, vamos entender como uma ausência — e abriremos espaço para outros convidados encantados. ✨
-📜 _Os nomes confirmados serão entregues aos magos da assessoria do Salão Kidáhora nesse prazo encantado!_
+📜 Os nomes confirmados serão entregues aos magos da assessoria do Salão Kidáhora nesse prazo encantado!
 💖 Para confirmar, basta clicar no link abaixo.
 Com todo meu carinho de princesa,
 Maitê 💕👑🎈
-
-👇 *Link de Confirmação:*
+                
+👇 Link de Confirmação:
 ${link}`;
                 
-                const zap = `https://wa.me/55${fam.telefone}?text=${encodeURIComponent(msg)}`;
+                const zap = `https://wa.me/55${fam.telefone}?text=${encodeURIComponent(msg.trim())}`;
                 const win = window.open(zap, '_blank');
                 
                 if (win && !win.closed) {
@@ -671,9 +660,6 @@ ${link}`;
                 setTimeout(() => URL.revokeObjectURL(url), 1000);
             }
 
-            // #endregion
-
-            // #region INITIALIZATION
             loadFromStorage();
             renderFamilias();
 
@@ -685,7 +671,6 @@ ${link}`;
                 showView('home');
             }
 
-            // Event Listeners
             $('adminLoginBtn').addEventListener('click', () => showView('login'));
             $('loginSubmitBtn').addEventListener('click', handleLogin);
             $('adminPassword').addEventListener('keypress', (e) => {
@@ -704,7 +689,6 @@ ${link}`;
                 alert(`Obrigado! Presença confirmada para: ${familia} (${membros}). Em breve essa confirmação será registrada.`);
             });
             
-            // Delegated event listener for family actions
             $('familiasContainer').addEventListener('click', (e) => {
                 if (e.target.classList.contains('fam-send')) {
                     const id = e.target.getAttribute('data-id');
@@ -724,7 +708,6 @@ ${link}`;
             $('editModal').addEventListener('click', (e) => {
                 if (e.target === $('editModal')) closeEditModal();
             });
-            // #endregion
         });
     </script>
 </body>
