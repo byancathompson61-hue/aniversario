@@ -285,7 +285,7 @@
     <div id="confirmView" class="center-wrap" hidden>
         <div class="card" id="confirmCard">
             <div class="banner">
-                <img src="https://i.ibb.co/6RT4rRzB/Imagem-do-Whats-App-de-2025-07-15-s-17-47-35-48b39f9c.jpg" alt="Banner da Festa da Maitê">
+                <img src="https://ibb.co/qMcR7MK5" alt="Banner da Festa da Maitê">
             </div>
             <h1>Maitê faz 1 aninho! 👧🎉</h1>
             <p id="familiaSaudacao"></p>
@@ -384,7 +384,7 @@
                 <br><br>
                 _ (Essas são apenas sugestões! Sua presença é o melhor presente. 💖)_
             `.trim().replace(/\n/g, '');
-            const IMAGE_URL = 'https://i.ibb.co/6RT4rRzB/Imagem-do-Whats-App-de-2025-07-15-s-17-47-35-48b39f9c.jpg';
+            const IMAGE_URL = 'https://i.ibb.co/qMcR7MK5'; // Novo link da imagem
 
             function getQueryParams() {
                 const params = new URLSearchParams(window.location.search);
@@ -501,15 +501,15 @@
                     admin: $('adminArea')
                 };
                 for (const view in views) {
-                    views[view].hidden = true;
-                    if (views[view].style) views[view].style.display = 'none';
+                    views [view].hidden = true;
+                    if (views [view].style) views [view].style.display = 'none';
                 }
-                if (views[viewName]) {
-                    views[viewName].hidden = false;
-                    if (views[viewName].style) views[viewName].style.display = 'flex';
+                if (views [viewName]) {
+                    views [viewName].hidden = false;
+                    if (views [viewName].style) views [viewName].style.display = 'flex';
                 }
                 if (viewName === 'admin') {
-                    views[viewName].style.display = 'block';
+                    views [viewName].style.display = 'block';
                 }
             }
             
@@ -595,11 +595,11 @@
             function enviarLinkWhatsApp(fam) {
                 const link = buildInviteLink(fam.responsavel, fam.membros);
                 
-                // Mensagem com o link da imagem para gerar a pré-visualização, agora na primeira linha
+                // Mensagem com o link da imagem na primeira linha e o novo link
                 const msg = `
-🌟✨ Olá, meus amiguinhos e familiares encantados! ✨🌟
-                
 ${IMAGE_URL}
+
+🌟✨ Olá, meus amiguinhos e familiares encantados! ✨🌟
                 
 O meu aniversário está se aproximando, e eu estou radiante de alegria! 🥳🎂
                 
