@@ -384,6 +384,7 @@
                 <br><br>
                 _ (Essas são apenas sugestões! Sua presença é o melhor presente. 💖)_
             `.trim().replace(/\n/g, '');
+            const IMAGE_URL = 'https://i.ibb.co/6RT4rRzB/Imagem-do-Whats-App-de-2025-07-15-s-17-47-35-48b39f9c.jpg';
 
             function getQueryParams() {
                 const params = new URLSearchParams(window.location.search);
@@ -594,7 +595,11 @@
             function enviarLinkWhatsApp(fam) {
                 const link = buildInviteLink(fam.responsavel, fam.membros);
                 
-                const msg = `🌟✨ Olá, meus amiguinhos e familiares encantados! ✨🌟
+                // Mensagem com o link da imagem para gerar a pré-visualização, agora na primeira linha
+                const msg = `
+🌟✨ Olá, meus amiguinhos e familiares encantados! ✨🌟
+                
+${IMAGE_URL}
                 
 O meu aniversário está se aproximando, e eu estou radiante de alegria! 🥳🎂
                 
